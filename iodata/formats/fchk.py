@@ -514,10 +514,13 @@ def dump_one(f: TextIO, data: IOData):
         not_frac_occs_b = all(np.equal(np.mod(data.mo.occsb, 1), 0.0))
         if not (not_frac_occs_a and not_frac_occs_b):
 #            raise ValueError("Cannot dump FCHK because given MO has fractional occupations!")
-             print("Warning: Some of the MOs have fractional occupations, ignore and dump anyway.")
+             print("Warning: Some of the MOs have fractional occupations, ignore and dump anyway.") # jkha 
         # assign number of alpha and beta electrons
+        print(data.mo.occsa)
+#        print(data.mo.occsb)
         na = int(np.sum(data.mo.occsa))
-        nb = int(np.sum(data.mo.occsb))
+        nb = int(np.sum(data.mo.occsa)) # jkha
+#        nb = int(np.sum(data.mo.occsb))
         multiplicity = abs(na - nb) + 1
         _dump_integer_scalars("Multiplicity", multiplicity, f)
         _dump_integer_scalars("Number of alpha electrons", na, f)
