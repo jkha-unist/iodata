@@ -514,7 +514,7 @@ def dump_one(f: TextIO, data: IOData):
         not_frac_occs_b = all(np.equal(np.mod(data.mo.occsb, 1), 0.0))
         if not (not_frac_occs_a and not_frac_occs_b):
 #            raise ValueError("Cannot dump FCHK because given MO has fractional occupations!")
-             print("Cannot dump FCHK because given MO has fractional occupations!")
+             print("Warning: Some of the MOs have fractional occupations, ignore and dump anyway.")
         # assign number of alpha and beta electrons
         na = int(np.sum(data.mo.occsa))
         nb = int(np.sum(data.mo.occsb))
